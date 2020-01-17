@@ -1,3 +1,0 @@
-### DevOps-ppdeployed
-
-This project aims to make an automatic deployment of different tools, realizing the integration of different technologies such as node, laravel, django, etc...
