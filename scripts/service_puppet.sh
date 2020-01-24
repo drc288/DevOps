@@ -6,7 +6,7 @@
 #
 # Create the configuratioen, get argv to get the installer
 if [ "$#" -eq 1 ]; then
-  if [ `whoami` != root ]; then
+  if [ "$(whoami)" != root ]; then
     echo "Please run this script as root or using sudo"
     exit
   else
@@ -14,6 +14,8 @@ if [ "$#" -eq 1 ]; then
       echo "yes agent"
     elif [ "${1^^}" == "MASTER" ]; then
       echo "yes master"
+    elif [ "${1^^}" == "ALL" ]; then
+      echo "all packages"
     else
       echo "The option '$1' is no recogniced"
     fi
