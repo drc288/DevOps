@@ -1,0 +1,7 @@
+#!/bin/bash
+#This script create folders for the api
+
+# for ORM
+#mkdir -p ./models/engine
+# for RESTFULL
+mkdir -p ./api/v1/views
