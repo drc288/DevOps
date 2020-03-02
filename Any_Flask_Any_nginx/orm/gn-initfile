@@ -1,0 +1,32 @@
+#!/bin/bash
+#generate files __init__.py
+
+make_init_file(){
+  cat <<EOF
+import os
+from models.base_model import BaseModel
+from models.user import User
+
+"""CNC - dictionary = { Class Name (string) : Class Type }"""
+
+if os.environ.get('HBNB_TYPE_STORAGE') == 'db':
+    from models.engine import db_storage
+    CNC = db_storage.DBStorage.CNC
+    storage = db_storage.DBStorage()
+else:
+    from models.engine import file_storage
+    CNC = file_storage.FileStorage.CNC
+    storage = file_storage.FileStorage()
+
+storage.reload()
+
+EOF
+}
+
+main(){
+  init_file=$(make_init_file)
+
+  echo "$init_file" | tee ./models/__init__.py
+}
+
+main

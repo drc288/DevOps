@@ -1,0 +1,42 @@
+#!/bin/bash
+# This script create all ORM
+
+print()
+{
+  COLOR='\033[0;32m'
+  echo -e ${COLOR}$1${NC}
+}
+
+make_folders(){
+  ./gn-folders
+}
+
+make_initfiles()
+{
+  ./gn-initfile
+  touch ./models/engine/__init__.py
+}
+
+make_file_storage(){
+  ./gn-file-storage
+}
+
+make_db_storage(){
+  ./gn-db-storage
+}
+
+make_base_model(){
+  ./gn-base-model
+}
+
+main(){
+  make_folders &> /dev/null
+  make_initfiles &> /dev/null
+  make_file_storage &> /dev/null
+  make_db_storage &> /dev/null
+  make_base_model &> /dev/null
+
+  print "Create ORM Succesfull."
+}
+
+main
